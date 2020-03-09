@@ -9,13 +9,13 @@ class TimeHour
   }
   public function Age($yearday)
   {
-    $$yearnow = date('Y');
+    $yearnow = date('Y');
     if($yearday>$yearnow)
     {
         return 0; 
     }
     $age = $yearnow - $yearday;
-        return $age;
+    return $age;
   }
   public function Now()
   {
@@ -94,10 +94,9 @@ class TimeHour
     }
     $week = date('W', strtotime($date));
     $weekto = $week +1;
-
-    $weekday =  $$year['mday'] +7;
-    $$yearnow  = "week ".$weekto.":".date('Y-m-'.$weekday.'');;
-    return $$yearnow;
+    $weekday =  $year['mday'] +7;
+    $yearnow  = "week ".$weekto.":".date('Y-m-'.$weekday.'');;
+    return $yearnow;
   }
   public function  Seachsunday($date)
   {
@@ -113,7 +112,7 @@ class TimeHour
     if($first_date>$second_date)
       {
             $difference= abs($first_date - $second_date);  
-            $$year = floor($difference / (365*60*60*24));  
+            $year = floor($difference / (365*60*60*24));  
             $mon = floor(($difference - $year * 365*60*60*24) / (30*60*60*24));  
             $day = floor(($difference - $year * 365*60*60*24 - $mon*30*60*60*24)/ (60*60*24));  
             return $day;
@@ -121,8 +120,7 @@ class TimeHour
     else
       {
         $difference = abs( $second_date-$first_date);  
-  
-        $$year = floor($difference / (365*60*60*24));  
+        $year = floor($difference / (365*60*60*24));  
         $mon = floor(($difference - $year * 365*60*60*24) / (30*60*60*24));  
         $day = floor(($difference- $year * 365*60*60*24 - $mon*30*60*60*24)/ (60*60*24));  
         return $day;
@@ -143,7 +141,7 @@ class TimeHour
     else
       {
         $difference = abs( $second_date-$first_date);  
-        $$year = floor($difference / (365*60*60*24));  
+        $year = floor($difference / (365*60*60*24));  
         $mon = floor(($difference- $year * 365*60*60*24) / (30*60*60*24));  
         $day = floor(($difference- $year * 365*60*60*24 - $mon*30*60*60*24)/ (60*60*24));  
         return $day;
@@ -169,14 +167,11 @@ class TimeHour
   else
     {
         $difference = abs($datetime - $timenow);  
-    
         $year = floor($difference / (365*60*60*24));  
         $mon = floor(($difference - $year * 365*60*60*24) / (30*60*60*24));  
         $day = floor(($difference- $year * 365*60*60*24 - $mon*30*60*60*24)/ (60*60*24));  
-        
-        
         $hour = floor(($difference - $year * 365*60*60*24 - $mon*30*60*60*24 -$day*60*60*24 )/(60*60));
-        $minute =  floor(($$difference - $year * 365*60*60*24 - $mon*30*60*60*24 -$day*60*60*24 - $hour*60*60)/60);
+        $minute =  floor(($difference - $year * 365*60*60*24 - $mon*30*60*60*24 -$day*60*60*24 - $hour*60*60)/60);
         $time = $hour .":".$minute ;
         return $time;
     }
@@ -187,7 +182,7 @@ class TimeHour
     $time2 = strtotime($endtime);
     if($time1<$time2)
     {
-        $$difference = abs($time2 - $time1);  
+        $difference = abs($time2 - $time1);  
         $year = floor($difference / (365*60*60*24));  
         $mon = floor(($difference- $year * 365*60*60*24) / (30*60*60*24));  
         $day = floor(($difference- $year * 365*60*60*24 - $mon*30*60*60*24)/ (60*60*24));  
@@ -199,12 +194,9 @@ class TimeHour
   else
     {
         $difference = abs($time2 - $time1);  
-    
         $year = floor($difference / (365*60*60*24));  
         $mon = floor(($difference - $year * 365*60*60*24) / (30*60*60*24));  
         $day = floor(($difference - $year * 365*60*60*24 - $mon*30*60*60*24)/ (60*60*24));  
-        
-        
         $hour = floor(($difference- $year * 365*60*60*24 - $mon*30*60*60*24 -$day*60*60*24 )/(60*60));
         $minute =  floor(($difference- $year * 365*60*60*24 - $mon*30*60*60*24 -$day*60*60*24 - $hour*60*60)/60);
         $time = $hour .":".$minute ;
