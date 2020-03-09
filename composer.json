@@ -1,0 +1,29 @@
+{
+  "name": "asikite/time3333",
+  "description": "Boilerplate package for creating other packages.",
+  "keywords": ["template", "composer", "package","csrf","token","security"],
+
+  "license": "MIT",
+  "authors": [
+      {
+          "name": "cuonglc111",
+          "email": "lucuong837@gmail.com",
+  "role": "Developer"
+      }
+  ],
+  "type": "project",
+  "require": {
+  "php": ">=7.1"
+  },
+  "require-dev": {
+  "phpunit/phpunit": "6.*"
+  },
+    "autoload": 
+    {
+      "psr-4": 
+      {
+        "TimeNow\\":"app/TimeNow"
+      }
+  
+    }
+}
