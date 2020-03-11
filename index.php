@@ -1,6 +1,7 @@
 <?php
-use  TimeNow\LibraryTime\TimeHour ;
+use  TimeNow\LibraryTime\timeHour ;
+use  TimeNow\Time\Hello ;
 require_once 'app/start.php'; 
-$put  = new  TimeHour();
-echo  $put->NowTimedistask('10/3/2020  8:00');
+$put  = new  timeHour;
+echo $put->seachFrstDay('2020-3-11');
 ?>
