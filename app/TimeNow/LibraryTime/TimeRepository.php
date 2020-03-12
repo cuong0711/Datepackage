@@ -33,7 +33,7 @@ class Time
   }
   public function getYesterday($timeZome  = "Asia/Ho_Chi_Minh",$fomat = '/m/Y')
   {
-    $yesterday = date('d')-1;
+    $yesterday = date('d') - 1;
     date_default_timezone_set($timeZome);
     
     return date(''.$yesterday.''.$fomat , time());
@@ -41,7 +41,7 @@ class Time
   }
   public function getTomorrow($timeZome = "Asia/Ho_Chi_Minh",$fomat = '/m/Y')
   {
-    $tomorrow = date('d')+1;
+    $tomorrow = date('d') + 1;
     date_default_timezone_set($timeZome);
     
     return date(''.$tomorrow.''.$fomat , time());
@@ -98,7 +98,7 @@ class Time
     }
     $week = date('W', strtotime($date));
     $weekTo = $week +1;
-    $weekDay =  date('d') +7;
+    $weekDay =  date('d') + 7;
     $day  = "week : ".$weekTo.":".date('Y-m-'.$weekDay.'');
     
     return $day;
