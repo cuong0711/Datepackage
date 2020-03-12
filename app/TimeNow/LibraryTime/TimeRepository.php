@@ -1,58 +1,58 @@
 <?php
 namespace  TimeNow\LibraryTime;
-class timeHour
+class Time
 {
   
-  public function yearNow()
+  public function getYear()
   {
     
     return date('Y');
   }
-  public function age($year_birth)
+  public function getAge($yearBirth)
   {
-    $day = date('Y');
-    if($year_birth > $day){
+    $year = date('Y');
+    if($yearBirth > $year){
         
-        return 0; 
+        return "Aggregate value"; 
     }
-    $age = $day - $year_birth;
+    $age = $year - $yearBirth;
     
         return $age;
   }
-  public function now()
+  public function getNow($timeZome = "Asia/Ho_Chi_Minh",$fomat = 'm/d/Y h:i:s a')
   {
-    date_default_timezone_set("Asia/Ho_Chi_Minh");
+    date_default_timezone_set($timeZome);
     
-    return date('m/d/Y h:i:s a', time()); 
+    return date($fomat, time()); 
   }
-  public function toDay()
+  public function getToDay($timeZome = "Asia/Ho_Chi_Minh",$fomat = 'm/d/Y')
   {
-    date_default_timezone_set("Asia/Ho_Chi_Minh");
+    date_default_timezone_set($timeZome);
     
-    return date('m/d/Y', time());
+    return date($fomat, time());
   }
-  public function yesterday()
+  public function getYesterday($timeZome  = "Asia/Ho_Chi_Minh",$fomat = '/m/Y')
   {
     $yesterday = date('d')-1;
-    date_default_timezone_set("Asia/Ho_Chi_Minh");
+    date_default_timezone_set($timeZome);
     
-    return date(''.$yesterday.''.'/m/Y', time());
+    return date(''.$yesterday.''.$fomat , time());
     
   }
-  public function tomorrow()
+  public function getTomorrow($timeZome = "Asia/Ho_Chi_Minh",$fomat = '/m/Y')
   {
     $tomorrow = date('d')+1;
-    date_default_timezone_set("Asia/Ho_Chi_Minh");
+    date_default_timezone_set($timeZome);
     
-    return date(''.$tomorrow.''.'/m/Y', time());
+    return date(''.$tomorrow.''.$fomat , time());
   }
-  public function  nowTime()
+  public function  getTime($timeZome = "Asia/Ho_Chi_Minh",$fomat = 'h:i:s a')
   {
-    date_default_timezone_set("Asia/Ho_Chi_Minh");
+    date_default_timezone_set($timeZome);
     
-    return date(' h:i:s a', time()); 
+    return date($fomat, time()); 
   }
-  public  function viewWeek()
+  public  function getWeek()
   {
     $date = date('Y-m-d');
     while (date('w', strtotime($date)) != 1){
@@ -64,7 +64,7 @@ class timeHour
       return $week;
 
   }
-  public  function lastWeek()
+  public  function getLastWeek()
   {
     $date = date('Y-m-d');
     while (date('w', strtotime($date)) != 1) {
@@ -72,11 +72,11 @@ class timeHour
       $date = date('Y-m-d', $tmp);
     }
     $week = date('W', strtotime($date));
-    $week_last =  $week - 1;
+    $weekLast =  $week - 1;
     
-      return $week_last;
+      return $weekLast;
   }
-  public function nextWeek()
+  public function getNextWeek()
   {
     $date = date('Y-m-d');
     while (date('w', strtotime($date)) != 1) {
@@ -84,12 +84,12 @@ class timeHour
       $date = date('Y-m-d', $tmp);
     }
     $week = date('W', strtotime($date));
-    $week_next =  $week + 1;
+    $weekNext =  $week + 1;
     
-    return $week_next;
+    return $weekNext;
     
   }
-  public function nextWeekDay()
+  public function getNextWeekDay()
   {
     $date = date('Y-m-d');
     while (date('w', strtotime($date)) != 1) {
@@ -97,13 +97,13 @@ class timeHour
       $date = date('Y-m-d', $tmp);
     }
     $week = date('W', strtotime($date));
-    $week_to = $week +1;
-    $week_day =  date('d') +7;
-    $day  = "week : ".$week_to.":".date('Y-m-'.$week_day.'');
+    $weekTo = $week +1;
+    $weekDay =  date('d') +7;
+    $day  = "week : ".$weekTo.":".date('Y-m-'.$weekDay.'');
     
     return $day;
   }
-  public function dayLastWeek()
+  public function getDayLastWeek()
   {
     $date = date('Y-m-d');
     while (date('w', strtotime($date)) != 1) {
@@ -111,9 +111,9 @@ class timeHour
       $date = date('Y-m-d', $tmp);
     }
     $week = date('W', strtotime($date));
-    $week_last = $week +1;
-    $week_day =  date('d') +7;
-    $day  = "week : ".$week_last.":".date('Y-m-'.$week_day.'');
+    $weekLast = $week  - 1;
+    $weekDay =  date('d') - 7;
+    $day  = "week : ".$weekLast.":".date('Y-m-'.$weekDay.'');
     
     return $day;
     
@@ -127,98 +127,98 @@ class timeHour
     
     return $frst .":".date($date);
   }
-  public function  dayDistance($start_date,$end_date)
+  public function  calculateDay($startDate,$endDate)
   {
-    $first_date =strtotime($start_date) ;
-    $second_date = strtotime($end_date);
-    if($first_date > $second_date){
-        $effect = abs($first_date - $second_date);  
-        $number_year = floor($effect / (365 * 60 *60 * 24));  
-        $number_month  = floor(($effect - $number_year * 365 * 60 *60 * 24) / (30 * 60 * 60 * 24));  
-        $number_day  = floor(($effect - $number_year * 365 * 60 *60 * 24 - $number_month * 30 * 60 * 60 * 24) / (60 * 60 * 24));  
+    $firstDate =strtotime($startDate);
+    $secondDate = strtotime($endDate);
+    if($firstDate > $secondDate){
+        $effect = abs($firstDate - $secondDate);  
+        $numberYear = floor($effect / (365 * 60 *60 * 24));  
+        $numberMonth  = floor(($effect - $numberYear * 365 * 60 *60 * 24) / (30 * 60 * 60 * 24));  
+        $numberDay  = floor(($effect - $numberYear * 365 * 60 *60 * 24 - $numberMonth * 30 * 60 * 60 * 24) / (60 * 60 * 24));  
         
-        return $number_day;
+        return $numberDay;
       }else{
-        $effect = abs( $second_date - $first_date);  
-        $number_year = floor($effect / (365 * 60 * 60 * 24));  
-        $number_month  = floor(($effect - $number_year * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));  
-        $number_day  = floor(($effect - $number_year * 365 * 60 * 60 * 24 - $number_month * 30 * 60 * 60 * 24)/ (60 * 60 * 24));  
+        $effect = abs( $secondDate - $firstDate);  
+        $numberYear = floor($effect / (365 * 60 * 60 * 24));  
+        $numberMonth  = floor(($effect - $numberYear * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));  
+        $numberDay  = floor(($effect - $numberYear * 365 * 60 * 60 * 24 - $numberMonth * 30 * 60 * 60 * 24)/ (60 * 60 * 24));  
         
-        return $number_day;
+        return $numberDay;
       }
   }
-  public function currentDayDistance($end_date)
+  public function currentToDay($endDate)
   {
-    $first_date =strtotime(date('Y-m-d'));
-    $second_date = strtotime($end_date);
-    if($first_date > $second_date){
-        $effect= abs($first_date - $second_date);  
-        $number_year = floor($effect / (365 * 60 * 60 * 24));  
-        $number_month = floor(($effect - $number_year * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));  
-        $number_day = floor(($effect - $number_year * 365 * 60 * 60 * 24 - $number_month * 30 * 60 * 60 * 24)/ (60 * 60 * 24));  
+    $firstDate =strtotime(date('Y-m-d'));
+    $secondDate = strtotime($endDate);
+    if($firstDate > $secondDate){
+        $effect= abs($firstDate - $secondDate);  
+        $numberYear = floor($effect / (365 * 60 * 60 * 24));  
+        $numberMonth = floor(($effect - $numberYear * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));  
+        $numberDay = floor(($effect - $numberYear * 365 * 60 * 60 * 24 - $numberMonth * 30 * 60 * 60 * 24)/ (60 * 60 * 24));  
         
-        return $number_day;
+        return $numberDay;
       }else{
-        $effect = abs($second_date - $first_date);  
-        $number_year = floor($effect / (365 * 60 * 60 *24));  
-        $number_month = floor(($effect - $number_year * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));  
-        $number_day = floor(($effect - $number_year * 365 * 60 * 60 * 24 - $number_month * 30 * 60 * 60 * 24)/ (60 * 60 * 24));
+        $effect = abs($secondDate - $firstDate);  
+        $numberYear = floor($effect / (365 * 60 * 60 *24));  
+        $numberMonth = floor(($effect - $numberYear * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));  
+        $numberDay = floor(($effect - $numberYear * 365 * 60 * 60 * 24 - $numberMonth * 30 * 60 * 60 * 24)/ (60 * 60 * 24));
           
-        return $number_day;
+        return $numberDay;
       }
   }
-  public function currentDistance($date)
+  public function currentDistance($date,$timeZome = "Asia/Ho_Chi_Minh",$fomat = 'm/d/Y h:i')
   {
-    date_default_timezone_set("Asia/Ho_Chi_Minh");
-    $now_time = date('m/d/Y h:i ', time()); 
-    $time_now  =  strtotime($now_time);
-    $date_time  = strtotime($date);
-    if($time_now < $date_time){
-        $effect= abs($date_time - $time_now);  
-        $number_year   = floor($effect / (365 * 60 * 60 * 24));  
-        $number_month  = floor(($effect - $number_year * 365 * 60 * 60 * 24) / (30* 60 * 60 * 24));  
-        $number_day    = floor(($effect - $number_year * 365 * 60 * 60 * 24 - $number_month * 30 * 60 * 60 * 24) / ( 60 * 60 * 24));  
-        $number_hour   = floor(($effect - $number_year * 365 * 60 * 60 * 24 - $number_month * 30 * 60 * 60 * 24 -$number_day* 60 * 60 * 24 ) / ($hour * 60 * 60));
-        $number_minute = floor(($effect - $number_year * 365 * 60 * 60 * 24 - $number_month * 30 * 60 * 60 * 24 -$number_day* 60 * 60 * 24 - $hour*$hour * 60 * 60) / 60);
-        $number_time =  $number_hour .":".$number_minute;
+    date_default_timezone_set($timeZome);
+    $nowTime = date($fomat, time()); 
+    $timeNow  =  strtotime($nowTime);
+    $dateTime  = strtotime($date);
+    if($timeNow < $dateTime){
+        $effect= abs($dateTime - $timeNow);  
+        $numberYear   = floor($effect / (365 * 60 * 60 * 24));  
+        $numberMonth  = floor(($effect - $numberYear * 365 * 60 * 60 * 24) / (30* 60 * 60 * 24));  
+        $numberDay    = floor(($effect - $numberYear * 365 * 60 * 60 * 24 - $numberMonth * 30 * 60 * 60 * 24) / ( 60 * 60 * 24));  
+        $numberHour   = floor(($effect - $numberYear * 365 * 60 * 60 * 24 - $numberMonth * 30 * 60 * 60 * 24 -$numberDay* 60 * 60 * 24 ) / ($hour * 60 * 60));
+        $numberMinute = floor(($effect - $numberYear * 365 * 60 * 60 * 24 - $numberMonth * 30 * 60 * 60 * 24 -$numberDay* 60 * 60 * 24 - $hour*$hour * 60 * 60) / 60);
+        $numberTime =  $numberHour .":".$numberMinute;
         
-        return $number_time;
+        return $numberTime;
     }else{
-        $effect = abs($date_time - $time_now);  
-        $number_year = floor($effect / (365 * 60 * 60 * 24));  
-        $number_month  = floor(($effect - $ynumberear * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));  
-        $number_day  = floor(($effect - $number_year *  365 * 60 * 60 * 24 - $number_month * 30 * 60 * 60 * 24) / (60 * 60 * 24));  
-        $number_hour = floor(($effect - $number_year * 365 *60 * 60 * 24 - $number_month * 30 * 60 * 60 * 24 - $number_day * 60 *60*24 ) / ($hour * 60 * 60));
-        $number_minute =  floor(($effect - $number_year * 365 * 60 * 60 * 24 - $number_month * 30 * 60 * 60 * 24 - $number_day * 60 * 60 * 24 - $number_hour*$hour * 60 * 60) / 60);
-        $number_time = $number_hour .":".$number_minute;
+        $effect = abs($dateTime - $timeNow);  
+        $numberYear = floor($effect / (365 * 60 * 60 * 24));  
+        $numberMonth  = floor(($effect - $ynumberear * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));  
+        $numberDay  = floor(($effect - $numberYear *  365 * 60 * 60 * 24 - $numberMonth * 30 * 60 * 60 * 24) / (60 * 60 * 24));  
+        $numberHour = floor(($effect - $numberYear * 365 *60 * 60 * 24 - $numberMonth * 30 * 60 * 60 * 24 - $numberDay * 60 *60*24 ) / ($hour * 60 * 60));
+        $numberMinute =  floor(($effect - $numberYear * 365 * 60 * 60 * 24 - $numberMonth * 30 * 60 * 60 * 24 - $numberDay * 60 * 60 * 24 - $numberHour*$hour * 60 * 60) / 60);
+        $numberTime = $numberHour .":".$numberMinute;
         
-        return $number_time;
+        return $numberTime;
     }
   }
-  public function timeDstance($start_time , $end_time)
+  public function currentTime($startTime,$endTime)
   {
-    $time_one  =  strtotime($start_time);
-    $time_two = strtotime($end_time);
-    if($time_one < $time_two){
-        $effect = abs($time_two - $time_one);  
-        $number_year = floor($effect / (365 * 60 * 60 * 24));  
-        $number_month = floor(($effect - $number_year * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));  
-        $number_day = floor(($effect - $number_year * 365 * 60 * 60 * 24 - $number_month * 30 * 60 * 60 * 24) / ( 60 * 60 * 24));  
-        $number_hour = floor(($effect - $number_year * 365 * 60 * 60 * 24 - $number_month * 30 * 60 * 60 * 24 - $number_day * 60 * 60 * 24 ) / (60 * 60));
-        $number_minute =  floor(($effect - $number_year * 365 * 60 * 60 * 24 - $number_month * 30 * 60 * 60 * 24 - $number_day * 60 * 60 * 24 - $number_hour * 60 * 60) / 60);
-        $number_time =  $number_hour .":".$number_minute;
+    $timeOne  =  strtotime($startTime);
+    $timeTwo = strtotime($endTime);
+    if($timeOne < $timeTwo){
+        $effect = abs($timeTwo - $timeOne);  
+        $numberYear = floor($effect / (365 * 60 * 60 * 24));  
+        $numberMonth = floor(($effect - $numberYear * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));  
+        $numberDay = floor(($effect - $numberYear * 365 * 60 * 60 * 24 - $numberMonth * 30 * 60 * 60 * 24) / ( 60 * 60 * 24));  
+        $numberHour = floor(($effect - $numberYear * 365 * 60 * 60 * 24 - $numberMonth * 30 * 60 * 60 * 24 - $numberDay * 60 * 60 * 24 ) / (60 * 60));
+        $numberMinute =  floor(($effect - $numberYear * 365 * 60 * 60 * 24 - $numberMonth * 30 * 60 * 60 * 24 - $numberDay * 60 * 60 * 24 - $numberHour * 60 * 60) / 60);
+        $numberTime =  $numberHour .":".$numberMinute;
         
-        return $number_time;
+        return $numberTime;
     }else{
-        $effect = abs($time_two - $time_one);  
-        $number_year = floor($effect / (365 * 60 * 60 * 24));  
-        $number_month = floor(($effect - $number_year * 365 * 60 * 60 * 24) / (30* 60 * 60 * 24));  
-        $number_day = floor(($effect - $number_year * 365 * 60 * 60 * 24 - $number_month *30* 60 * 60 * 24) / ( 60 * 60 * 24));  
-        $number_hour = floor(($effect - $number_year * 365 * 60 * 60 * 24 - $number_month * 30 * 60 * 60 * 24 - $number_day * 60 * 60 * 24 ) / (60 * 60));
-        $number_minute =  floor(($effect - $number_year * 365 * 60 * 60 * 24 - $number_month * 30 * 60 * 60 * 24 - $number_day * 60 * 60 * 24 - $number_hour * 60 * 60) / 60);
-        $number_time = $number_hour .":".$number_minute;
+        $effect = abs($timeTwo - $timeOne);  
+        $numberYear = floor($effect / (365 * 60 * 60 * 24));  
+        $numberMonth = floor(($effect - $numberYear * 365 * 60 * 60 * 24) / (30* 60 * 60 * 24));  
+        $numberDay = floor(($effect - $numberYear * 365 * 60 * 60 * 24 - $numberMonth *30* 60 * 60 * 24) / ( 60 * 60 * 24));  
+        $numberHour = floor(($effect - $numberYear * 365 * 60 * 60 * 24 - $numberMonth * 30 * 60 * 60 * 24 - $numberDay * 60 * 60 * 24 ) / (60 * 60));
+        $numberMinute =  floor(($effect - $numberYear * 365 * 60 * 60 * 24 - $numberMonth * 30 * 60 * 60 * 24 - $numberDay * 60 * 60 * 24 - $numberHour * 60 * 60) / 60);
+        $numberTime = $numberHour .":".$numberMinute;
         
-        return $number_time;
+        return $numberTime;
     } 
   }
 }
