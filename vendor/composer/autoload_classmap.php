@@ -6,6 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'TimeNow\\LibraryTime\\timeHour' => $baseDir . '/app/TimeNow/LibraryTime/TimeRepository.php',
+    'TimeNow\\LibraryTime\\Time' => $baseDir . '/app/TimeNow/LibraryTime/TimeRepository.php',
     'TimeNow\\Time\\Hello' => $baseDir . '/app/TimeNow/Time/Hello.php',
 );

@@ -19,19 +19,19 @@ class Time
     
         return $age;
   }
-  public function getNow($timeZome = "Asia/Ho_Chi_Minh",$fomat = 'm/d/Y h:i:s a')
+  public function getNow($timeZome = "Asia/Ho_Chi_Minh", $fomat = 'm/d/Y h:i:s a')
   {
     date_default_timezone_set($timeZome);
     
     return date($fomat, time()); 
   }
-  public function getToDay($timeZome = "Asia/Ho_Chi_Minh",$fomat = 'm/d/Y')
+  public function getToDay($timeZome = "Asia/Ho_Chi_Minh", $fomat = 'm/d/Y')
   {
     date_default_timezone_set($timeZome);
     
     return date($fomat, time());
   }
-  public function getYesterday($timeZome  = "Asia/Ho_Chi_Minh",$fomat = '/m/Y')
+  public function getYesterday($timeZome  = "Asia/Ho_Chi_Minh",  $fomat = '/m/Y')
   {
     $yesterday = date('d') - 1;
     date_default_timezone_set($timeZome);
@@ -39,14 +39,14 @@ class Time
     return date(''.$yesterday.''.$fomat , time());
     
   }
-  public function getTomorrow($timeZome = "Asia/Ho_Chi_Minh",$fomat = '/m/Y')
+  public function getTomorrow($timeZome = "Asia/Ho_Chi_Minh",  $fomat = '/m/Y')
   {
     $tomorrow = date('d') + 1;
     date_default_timezone_set($timeZome);
     
     return date(''.$tomorrow.''.$fomat , time());
   }
-  public function  getTime($timeZome = "Asia/Ho_Chi_Minh",$fomat = 'h:i:s a')
+  public function  getTime($timeZome = "Asia/Ho_Chi_Minh",  $fomat = 'h:i:s a')
   {
     date_default_timezone_set($timeZome);
     
@@ -127,7 +127,7 @@ class Time
     
     return $frst .":".date($date);
   }
-  public function  calculateDay($startDate,$endDate)
+  public function  calculateDay($startDate, $endDate)
   {
     $firstDate =strtotime($startDate);
     $secondDate = strtotime($endDate);
@@ -167,7 +167,7 @@ class Time
         return $numberDay;
       }
   }
-  public function currentDistance($date,$timeZome = "Asia/Ho_Chi_Minh",$fomat = 'm/d/Y h:i')
+  public function currentDistance($date, $timeZome = "Asia/Ho_Chi_Minh",  $fomat = 'm/d/Y h:i')
   {
     date_default_timezone_set($timeZome);
     $nowTime = date($fomat, time()); 
@@ -195,7 +195,7 @@ class Time
         return $numberTime;
     }
   }
-  public function currentTime($startTime,$endTime)
+  public function currentTime($startTime,  $endTime)
   {
     $timeOne  =  strtotime($startTime);
     $timeTwo = strtotime($endTime);
