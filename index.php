@@ -2,6 +2,6 @@
 use App\LibraryTime\Time;
 require_once 'app/autoload.php'; 
 $put  = new Time;
-echo $put->currentDistance("2020-03-20 10:30");
+echo $put->calculateDay('2019-04-10','2019-05-10');
 
 ?>

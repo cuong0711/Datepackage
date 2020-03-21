@@ -13,7 +13,7 @@ class  SampleTest extends TestCase
     }
     public function testGetYearBirth()
     {
-        $yearBirth =  $this->url->getAge(1998);
+        $yearBirth =  $this->url->getAge('1993-01-01');
         $this->assertTrue($yearBirth);
     }
     public function testGetToday()
@@ -71,6 +71,11 @@ class  SampleTest extends TestCase
     {
         $weeekNext = $this->url->getNextWeek();
         $this->assertTrue($weeekNext);
+    }
+    public function testGetTime()
+    {
+        $timeNow = $this->url->getTime();
+        $this->assertTrue($timeNow);
     }
 
 
