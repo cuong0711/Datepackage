@@ -1,9 +1,7 @@
-<?php
-use  TimeNow\LibraryTime\Time ;
-use  TimeNow\Time\Hello ;
-require_once 'app/start.php'; 
-$put  = new  Time;
- echo $put->currentTime('2014-09-27 10:00','2014-09-27 11:00');
-
+<?php 
+use App\LibraryTime\Time;
+require_once 'app/autoload.php'; 
+$put  = new Time;
+echo $put->currentDistance("2020-03-20 10:30");
 
 ?>
