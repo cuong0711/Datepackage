@@ -5,11 +5,13 @@ class Collection
     public function getAge($yearBirth, $timeZome = "Asia/Ho_Chi_Minh", $fomat = 'Y-m-d')
     {  
         $year = date($fomat);
-        if(preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",  $year) && preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",  $yearBirth) || preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $yearBirth)){
-            if($yearBirth >= $year ){
-                return false; 
+       if(preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",  $year) && preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",  $yearBirth) || preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $yearBirth) || preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $year) ){
+           $firstDate =strtotime($year);
+           $secondDate = strtotime($yearBirth);
+            if($firstDate >= $secondDate){
+                return true; 
             }else{
-                return true;
+                return false;
             }
         }else{
             return false;
@@ -38,6 +40,42 @@ class Collection
             return false;
         }
         
+    }
+    public function getNextWeekDay($fomat = 'Y-m-d')
+    {
+        $nextDay = date($fomat); 
+        if(preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",  $nextDay) || preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $nextDay)){
+            return true;
+        }else{
+            return false;
+        }   
+    }
+    public function getDayLastWeek($fomat = 'Y-m-d')
+    {
+        $lastDay = date($fomat); 
+        if(preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",  $lastDay) || preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $lastDay)){
+            return true;
+        }else{
+            return false;
+        }   
+    }
+    public function getYesterday($timeZome  = "Asia/Ho_Chi_Minh" , $fomat='d-m-Y')
+    {
+        $lastDay = date($fomat); 
+        if(preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",  $lastDay) || preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $lastDay)){
+            return true;
+        }else{
+            return false;
+        }   
+    }
+    public function getTomorrow($timeZome = "Asia/Ho_Chi_Minh",  $fomat = 'd-m-Y')
+    {
+        $nextDay = date($fomat); 
+        if(preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",  $nextDay) || preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $nextDay)){
+            return true;
+        }else{
+            return false;
+        }   
     }
     public function getWeek($fomat = 'Y-m-d')
     {
