@@ -167,6 +167,125 @@ class Collection
         }
 
     }
+    public function plusCurrentDay($numberDay ,$numberMonth , $numberYear,  $fomat = 'd-m-Y')
+    {
+        $date = date($fomat);
+    if (preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",$date) && $numberDay >= 0  &&  $numberMonth >=0 && $numberYear >=0 ) {
+      
+        return  true;
+
+    }else if(preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $date) && $numberDay >= 0  &&  $numberMonth >=0 && $numberYear >=0){
+      
+        return true;
+    }else {
+      
+        return false ;
+    }
+    }
+    public function plusDay($numberDay ,$numberMonth , $numberYear, $statend ,$fomat= 'd-m-Y')
+    {
+    if (preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",$statend) && $numberDay >= 0  &&  $numberMonth >=0 && $numberYear >=0 ) {
+      
+        return true;
+
+    }else if(preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $statend) && $numberDay >= 0  &&  $numberMonth >=0 && $numberYear >=0){
+      
+        return true;
+    }else{
+        
+        return false ;
+    }
+    }
+   
+    public function plusCurrentTime($numberhour , $numberMinute ,$timeZome = "Asia/Ho_Chi_Minh" ,$fomat ='d-m-Y h:i a')
+   {     
+      date_default_timezone_set($timeZome);
+        $timeDate = date($fomat,time());
+    if (preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/",$timeDate) && $numberhour >= 0 && $numberMinute >= 0) {
+      
+        return true;
+    }else if(preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4}) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/",  $timeDate) && $numberhour >= 0 && $numberMinute >= 0) {
+      
+        return true;
+    }else{
+      
+        return false;
+    }
+    
+   }
+    public function plusTime($numberhour , $numberMinute , $timeDay)
+   {
+    if (preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/",$timeDay) && $numberhour >= 0 && $numberMinute >= 0) {
+      
+        return true;
+    }else if(preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4}) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/",  $timeDay) && $numberhour >= 0 && $numberMinute >= 0) {
+   
+        return true;
+    }else{
+        
+        return false ;
+    }
+   }
+    public function  subtractionCurrentDate($numberDay ,$numberMonth , $numberYear,  $fomat = 'd-m-Y')
+    {
+        $date = date($fomat);
+    if (preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",$date) && $numberDay >= 0  &&  $numberMonth >=0 && $numberYear >=0 ) {
+        
+        
+        return true;
+
+    }else if(preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $date) && $numberDay >= 0  &&  $numberMonth >=0 && $numberYear >=0){
+        
+        return true;
+    }else{
+        
+        return false;
+    }
+    }
+    public function subtractionDate($numberDay ,$numberMonth , $numberYear, $endtime)
+    {
+        if (preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",$endtime) && $numberDay >= 0  &&  $numberMonth >=0 && $numberYear >=0  ) {
+            
+        return true;
+  
+        }else if(preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $endtime) && $numberDay >= 0  &&  $numberMonth >=0 && $numberYear >=0){
+            
+        return true;
+        }else{
+        return false ;
+        }
+    } 
+    public function  subtractionCurrentTime($numberhour , $numberMinute ,$timeZome = "Asia/Ho_Chi_Minh" ,$fomat ='d-m-Y h:i a')
+  {
+    date_default_timezone_set($timeZome);
+    $timeDate = date($fomat,time());
+    if (preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/",$timeDate) && $numberhour >= 0 && $numberMinute >= 0) {
+     
+        return true;
+    }else if(preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4}) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/",  $timeDate) && $numberhour >= 0 && $numberMinute >= 0) {
+
+        return true;
+    }else{
+        
+        return false;
+    }
+  }
+    public function  subtractionTime($numberhour , $numberMinute ,$endtime ,$fomat ='d-m-Y h:i a')
+  {
+    
+    if (preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/",$endtime) && $numberhour >= 0 && $numberMinute >= 0) {
+      
+        return true;
+    }else if(preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4}) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/",  $endtime) && $numberhour >= 0 && $numberMinute >= 0) {
+  
+        return true;
+    }else{
+      return false ;
+    }
+  }
+ 
+
 }
+
 
 ?>

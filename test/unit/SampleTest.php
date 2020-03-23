@@ -13,7 +13,7 @@ class  SampleTest extends TestCase
     }
     public function testGetYearBirth()
     {
-        $yearBirth =  $this->url->getAge('1996-08-17');
+        $yearBirth =  $this->url->getAge('12-12-1999');
         $this->assertTrue($yearBirth);
     }
     public function testGetToday()
@@ -94,13 +94,55 @@ class  SampleTest extends TestCase
         $this->assertTrue($lastDay);
 
     }
-    public function getGetTomorrow()
+    public function testGetTomorrow()
     {
         $nextDay = $this->url->getTomorrow();
         $this->assertTrue($nextDay);
 
     }
-
+    public function  testPlusCurrentDay()
+    {
+        $plusDay = $this->url->plusCurrentDay(21,0,0);
+        $this->assertTrue($plusDay);
+    }
+    public function testPlusDay()
+    {
+        $plusDay = $this->url->plusDay(12,0,0 , '12-02-2012');
+        $this->assertTrue($plusDay);
+    }
+     
+    public function testPlusCurrentTime()
+    {
+        $plushour  = $this->url->plusCurrentTime(23,2);
+        $this->assertTrue($plushour);
+    }
+    public function testPlusTime()
+    {
+        $plusTime  = $this->url->plusTime(12,2,'2012-02-01 12:00');
+        $this->assertTrue($plusTime);
+    }
+    public function testSubtractionCurrentDate()
+    {
+        $subDate = $this->url->subtractionCurrentDate(21,2,1);
+        $this->assertTrue($subDate);
+         
+    }
+    public function  testSubtractionDate()
+    {
+        $subDate = $this->url->subtractionDate(12,1,2 , '12-02-2012');
+        $this->assertTrue($subDate);
+    }
+    public function testSubtractionCurrentTime()
+    {
+        $subTime = $this->url->subtractionCurrentTime(21,1);
+        $this->assertTrue($subTime);
+    }
+    public function testSubtractionTime()
+    {
+        $subTime = $this->url->subtractionTime(12,1, '2012-02-12 12:00');
+        $this->assertTrue($subTime);
+    }
+   
 
 }
 ?>
