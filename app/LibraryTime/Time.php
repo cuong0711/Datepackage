@@ -370,16 +370,16 @@ class Time
     
   }
  
-  public function plusTime($numberhour  , $numberMinute   , $timeDay)
+  public function plusTime($numberHour  , $numberMinute   , $timeDay)
   {
     if (preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/",$timeDay) && $numberHour >= 0 && $numberMinute >=0) {
       $today = date('Y-m-d h:i');
-      $date = date('Y-m-d h:i:s A', strtotime($timeDate . " + $numberHour hours" ."+ $numberMinute  minutes"));
+      $date = date('Y-m-d h:i:s A', strtotime($timeDay . " + $numberHour hours" ."+ $numberMinute  minutes"));
       return $date;
       
-    }else if(preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4}) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/",  $timeDay) || $number > 0) {
+    }else if(preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4}) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/",  $timeDay) && $numberHour >= 0 && $numberMinute >=0) {
       $today = date('Y-m-d h:i');
-      $date = date('Y-m-d h:i:s A', strtotime($timeDate . " + $numberHour hours" ."+ $numberMinute  minutes"));
+      $date = date('Y-m-d h:i:s A', strtotime($timeDay . " + $numberHour hours" ."+ $numberMinute  minutes"));
       return $date;
     }else{
       return 'Aggregate value' ;
