@@ -5,16 +5,15 @@ class Collection
     public function getAge($yearBirth, $timeZome = "Asia/Ho_Chi_Minh", $fomat = 'Y-m-d')
     {  
         $year = date($fomat);
-        if(preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",  $year) && preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",  $yearBirth) || preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $yearBirth) || preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $year) ){
-            $firstDate =strtotime($year);
-            $secondDate = strtotime($yearBirth);
-            if($firstDate >= $secondDate){
-                return true; 
-            }else{
-                return false;
-            }
+        $firstDate =strtotime($year);
+        $secondDate = strtotime($yearBirth);
+        if(preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",  $year) && preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",  $yearBirth) || preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $yearBirth) || preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $year) && $firstDate >= $secondDate ){
+             
+              return true; 
+          
         }else{
-            return false;
+            
+              return false;
         }
        
     }
@@ -23,8 +22,10 @@ class Collection
         date_default_timezone_set($timeZome);
         $date = date($fomat, time());
         if (preg_match("/^(?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/", $date)) {
+           
             return true ;
-        } else {
+        }else{
+           
             return false;
         }
         
@@ -35,8 +36,10 @@ class Collection
     
         $today= date($fomat, time()); 
         if(preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",  $today) || preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $today)){
+            
             return true;
         }else{
+           
             return false;
         }
         
@@ -45,8 +48,10 @@ class Collection
     {
         $nextDay = date($fomat); 
         if(preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",  $nextDay) || preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $nextDay)){
+            
             return true;
         }else{
+           
             return false;
         }   
     }
@@ -54,8 +59,10 @@ class Collection
     {
         $lastDay = date($fomat); 
         if(preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",  $lastDay) || preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $lastDay)){
+           
             return true;
         }else{
+            
             return false;
         }   
     }
@@ -63,8 +70,10 @@ class Collection
     {
         $lastDay = date($fomat); 
         if(preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",  $lastDay) || preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $lastDay)){
+            
             return true;
         }else{
+            
             return false;
         }   
     }
@@ -72,8 +81,10 @@ class Collection
     {
         $nextDay = date($fomat); 
         if(preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",  $nextDay) || preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $nextDay)){
+           
             return true;
         }else{
+           
             return false;
         }   
     }
@@ -81,8 +92,10 @@ class Collection
     {
         $today= date($fomat); 
         if(preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",  $today) || preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $today)){
+            
             return true;
         }else{
+            
             return false;
         }
     }
@@ -99,8 +112,10 @@ class Collection
     {
         $nextWeek= date($fomat); 
         if(preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",  $nextWeek) || preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $nextWeek)){
+           
             return true;
         }else{
+            
             return false;
         }
     }
@@ -109,30 +124,31 @@ class Collection
     {
         $dateTime= date($fomat, time()); 
         if (preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/", $dateTime) || preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4}) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/",  $dateTime)){
+            
             return true;
         }else{
+           
             return false;
         }
     }
     public function seachFrstDay($date)
     {
         if(preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",  $date) || preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $date)){
+            
             return true;
         }else{
+           
             return false;
         }
     }
     public function calculateDay($startDate, $endDate)
     {
-        if (preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",$startDate) && preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",$endDate) || preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $startDate) || preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $endDate)){
-            if($endDate>$startDate){
+        if (preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",$startDate) && preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",$endDate) || preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $startDate) || preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $endDate) && $endDate>$startDate){
+      
                 return true;
-            }else{
-                return false;
-            }
-            
         }else{
-            return false;
+            
+                return false;
         }
     }
     public function  currentToDay($endDate , $timeZome = "Asia/Ho_Chi_Minh", $fomat = 'Y-m-d')
@@ -155,14 +171,11 @@ class Collection
     }
     public function currentTime($startTime ,$endTime)
     {
-        if(preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/", $startTime) && preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/", $endTime) ||  preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4}) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/",  $startTime) ||  preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4}) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/",  $endTime)){
-            if ($endTime > $startTime) {
+        if(preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/", $startTime) && preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/", $endTime) ||  preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4}) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/",  $startTime) ||  preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4}) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/",  $endTime) && $endTime > $startTime){
+           
                 return true;
-            } else {
-                return false;
-            }
-            
         }else{
+            
             return false;
         }
 
@@ -170,25 +183,17 @@ class Collection
     public function plusCurrentDay($numberDay ,$numberMonth , $numberYear,  $fomat = 'd-m-Y')
     {
         $date = date($fomat);
-        if (preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",$date) && $numberDay >= 0  &&  $numberMonth >=0 && $numberYear >=0 ) {
+        if (preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",$date) && $numberDay >= 0  &&  $numberMonth >=0 && $numberYear >=0 || preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $date)) {
 
             return  true;
+        }else{
 
-        }else if(preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $date) && $numberDay >= 0  &&  $numberMonth >=0 && $numberYear >=0){
-
-            return true;
-        }else {
-
-            return false ;
+            return false;
         }
     }
     public function plusDay($numberDay ,$numberMonth , $numberYear, $statend ,$fomat= 'd-m-Y')
     {
-        if (preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",$statend) && $numberDay >= 0  &&  $numberMonth >=0 && $numberYear >=0 ) {
-
-            return true;
-
-        }else if(preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $statend) && $numberDay >= 0  &&  $numberMonth >=0 && $numberYear >=0){
+        if (preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",$statend) && $numberDay >= 0  &&  $numberMonth >=0 && $numberYear >=0 || preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $statend)) {
 
             return true;
         }else{
@@ -201,10 +206,7 @@ class Collection
     {     
         date_default_timezone_set($timeZome);
         $timeDate = date($fomat,time());
-        if (preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/",$timeDate) && $numberhour >= 0 && $numberMinute >= 0) {
-
-            return true;
-        }else if(preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4}) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/",  $timeDate) && $numberhour >= 0 && $numberMinute >= 0) {
+        if (preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/",$timeDate) && $numberhour >= 0 && $numberMinute >= 0 || preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4}) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/",  $timeDate)) {
 
             return true;
         }else{
@@ -215,11 +217,8 @@ class Collection
     }
     public function plusTime($numberhour , $numberMinute , $timeDay)
     {
-        if (preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/",$timeDay) && $numberhour >= 0 && $numberMinute >= 0) {
+        if (preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/",$timeDay) && $numberhour >= 0 && $numberMinute >= 0 || preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4}) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/",  $timeDay)) {
       
-            return true;
-        }else if(preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4}) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/",  $timeDay) && $numberhour >= 0 && $numberMinute >= 0) {
-   
             return true;
         }else{
         
@@ -229,55 +228,42 @@ class Collection
     public function  subtractionCurrentDate($numberDay ,$numberMonth , $numberYear,  $fomat = 'd-m-Y')
     {
         $date = date($fomat);
-        if (preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",$date) && $numberDay >= 0  &&  $numberMonth >=0 && $numberYear >=0 ) {
+        if (preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",$date) && $numberDay >= 0  &&  $numberMonth >=0 && $numberYear >=0 || preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $date)) {
         
         
             return true;
-
-        }else if(preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $date) && $numberDay >= 0  &&  $numberMonth >=0 && $numberYear >=0){
-        
-        return true;
         }else{
         
-        return false;
+           return false;
         }
     }
     public function subtractionDate($numberDay ,$numberMonth , $numberYear, $endtime)
     {
-        if (preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",$endtime) && $numberDay >= 0  &&  $numberMonth >=0 && $numberYear >=0  ) {
+        if (preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/",$endtime) && $numberDay >= 0  &&  $numberMonth >=0 && $numberYear >=0 || (preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $endtime)) {
             
-        return true;
-  
-        }else if(preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4})/",  $endtime) && $numberDay >= 0  &&  $numberMonth >=0 && $numberYear >=0){
-            
-        return true;
+             return true;
         }else{
-        return false ;
+            
+             return false ;
         }
     } 
     public function  subtractionCurrentTime($numberhour , $numberMinute ,$timeZome = "Asia/Ho_Chi_Minh" ,$fomat ='d-m-Y h:i a')
     {
         date_default_timezone_set($timeZome);
         $timeDate = date($fomat,time());
-        if (preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/",$timeDate) && $numberhour >= 0 && $numberMinute >= 0) {
+        if (preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/",$timeDate) && $numberhour >= 0 && $numberMinute >= 0 || preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4}) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/",  $timeDate)) {
      
-            return true;
-        }else if(preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4}) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/",  $timeDate) && $numberhour >= 0 && $numberMinute >= 0) {
-
-            return true;
+           return true;
         }else{
         
-        return false;
+           return false;
         }
     }
     public function  subtractionTime($numberhour , $numberMinute ,$endtime ,$fomat ='d-m-Y h:i a')
     {
     
-        if (preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/",$endtime) && $numberhour >= 0 && $numberMinute >= 0) {
+        if (preg_match("/(\d{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/",$endtime) && $numberhour >= 0 && $numberMinute >= 0 || preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4}) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/",  $endtime)) {
       
-            return true;
-        }else if(preg_match("/(0[1-9]|[1-2][0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4}) (?:2[0-4]|[01][1-9]|10):(([0-5][0-9]))/",  $endtime) && $numberhour >= 0 && $numberMinute >= 0) {
-  
             return true;
         }else{
       
