@@ -2,6 +2,7 @@
 use App\LibraryTime\Time;
 require_once 'app/autoload.php'; 
 $put  = new Time;
+
   echo "Khoảng cách 01-01-1995 -> 23-03-2020 :" .''. $put->calculateDay('01-01-1995','23-03-2020');
   echo "<br>";
   echo "Khoảng cách ngày hiện tại đến ngày 23-12-2020 :" .''.$put->currentToDay('23-12-2020');
