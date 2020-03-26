@@ -204,10 +204,10 @@ class Time
       $frst = strtolower($frst);
       
       return $frst .":".date($date);
-		}else{
+     }else{
 		
     	return 'Aggregate value';
-		}
+     }
   }
   public function  calculateDay($startDate, $endDate)
   {
